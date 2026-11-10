@@ -1,6 +1,5 @@
 User-agent: *
 Allow: /
-Disallow: /LEIAME.md
-Disallow: /vercel.json
+Disallow: /_fonte/
 
 Sitemap: https://site---k-m.pages.dev/sitemap.xml
