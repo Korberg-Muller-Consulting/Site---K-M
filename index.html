@@ -132,13 +132,16 @@ h2{font-family:var(--serif);font-weight:400;font-size:clamp(34px,4.2vw,56px);lin
 
 /* Liderança */
 .lead-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:48px}
-.person{display:grid;grid-template-columns:120px minmax(0,1fr);gap:28px;align-items:start;padding-top:28px;border-top:1px solid var(--line)}
-.avatar{width:120px;height:150px;background:var(--mist);border:1px dashed #A9B6C8;display:grid;place-items:center;color:var(--muted);font-size:12px;text-align:center;padding:8px}
-.person h3{font-family:var(--serif);font-weight:500;font-size:28px;margin:0 0 4px;color:var(--navy)}
-.person .role{color:var(--signal);font-weight:600;font-size:15px;margin:0 0 14px}
+.person{display:grid;grid-template-columns:240px minmax(0,1fr);gap:36px;align-items:start;padding-top:32px;border-top:1px solid var(--line)}
+/* Fotos: proporção fixa 4:5 e object-fit:cover, então nunca distorcem */
+.avatar{width:100%;aspect-ratio:4/5;background:var(--mist);overflow:hidden}
+.avatar img{width:100%;height:100%;object-fit:cover;object-position:50% 20%}
+.avatar.empty{border:1px dashed #A9B6C8;display:grid;place-items:center;color:var(--muted);font-size:13px;text-align:center;padding:8px}
+.person h3{font-family:var(--serif);font-weight:500;font-size:30px;margin:8px 0 4px;color:var(--navy);line-height:1.15}
+.person .role{color:var(--signal);font-weight:600;font-size:15px;margin:0 0 16px}
 .person p{margin:0;color:var(--muted);font-size:16px}
-@media (max-width:860px){.lead-grid{grid-template-columns:1fr}}
-@media (max-width:480px){.person{grid-template-columns:1fr}}
+@media (max-width:1100px){.lead-grid{grid-template-columns:1fr;gap:56px}}
+@media (max-width:560px){.person{grid-template-columns:1fr;gap:24px}.avatar{max-width:320px}}
 
 /* Contato */
 .contact{background:var(--mist)}
@@ -180,9 +183,9 @@ footer .bottom{display:flex;flex-wrap:wrap;justify-content:space-between;gap:12p
   <div class="wrap">
     <a class="brand" href="#topo" aria-label="Korberg & Müller Consulting, início">
       <svg class="brand-mark" viewBox="0 0 36 36" aria-hidden="true">
-        <rect x=".5" y=".5" width="35" height="35" fill="none" stroke="#fff" stroke-opacity=".55"/>
-        <path d="M9 9v18M9 18l9-9M12.5 15l6 12" stroke="#fff" stroke-width="1.8" fill="none"/>
-        <path d="M21 27V9l4.5 9 4.5-9v18" stroke="#8DB3FF" stroke-width="1.8" fill="none"/>
+        <rect x=".75" y=".75" width="34.5" height="34.5" fill="none" stroke="#fff" stroke-opacity=".55" stroke-width="1.5"/>
+        <path d="M7 11.5v13M7 19l8.5-7.5M10.5 16.5l5.5 8" stroke="#fff" stroke-width="1.8" fill="none" stroke-linejoin="miter"/>
+        <path d="M19 24.5v-13l5 8 5-8v13" stroke="#8DB3FF" stroke-width="1.8" fill="none" stroke-linejoin="miter"/>
       </svg>
       <span class="brand-name">Korberg &amp; Müller<small>CONSULTING</small></span>
     </a>
@@ -314,7 +317,7 @@ footer .bottom{display:flex;flex-wrap:wrap;justify-content:space-between;gap:12p
       </div>
       <div class="lead-grid">
         <div class="person">
-          <div class="avatar">[FOTO]</div>
+          <div class="avatar empty">[FOTO]</div>
           <div>
             <h3>Felipe [SOBRENOME]</h3>
             <p class="role">Sócio fundador</p>
@@ -322,7 +325,7 @@ footer .bottom{display:flex;flex-wrap:wrap;justify-content:space-between;gap:12p
           </div>
         </div>
         <div class="person">
-          <div class="avatar">[FOTO]</div>
+          <div class="avatar"><img src="images/mariana.jpg" width="480" height="600" alt="Retrato de Mariana, sócia fundadora da Korberg & Müller" loading="lazy" decoding="async"></div>
           <div>
             <h3>Mariana [SOBRENOME]</h3>
             <p class="role">Sócia fundadora</p>
