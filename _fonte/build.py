@@ -53,6 +53,12 @@ BRAND_SVG = '''<svg class="brand-mark" viewBox="0 0 36 36" aria-hidden="true">
 CHECK = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg>'
 WA_ICON = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 19.5l1.3-3.7A8 8 0 1 1 8.4 18.8z"/><path d="M9 10.5h.01M12 10.5h.01M15 10.5h.01"/></svg>'
 
+import hashlib
+def _asset_version():
+    data = b"".join(open(os.path.join(SRC, f), "rb").read() for f in ("base.css", "extra.css", "motion.css", "content.css", "charts.css", "site.js"))
+    return hashlib.sha256(data).hexdigest()[:10]
+ASSET_V = _asset_version()
+
 def head(depth, title, desc, path, jsonld, extra_robots=None):
     p = pref(depth)
     ld = "\n".join('<script type="application/ld+json">\n%s\n</script>' % json.dumps(j, ensure_ascii=False, indent=2) for j in jsonld)
@@ -89,7 +95,7 @@ def head(depth, title, desc, path, jsonld, extra_robots=None):
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700&amp;family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;0,6..72,600;1,6..72,400&amp;display=swap" rel="stylesheet">
 <script src="{p}assets/js-flag.js"></script>
-<link rel="stylesheet" href="{p}assets/site.css">
+<link rel="stylesheet" href="{p}assets/site.css?v={ASSET_V}">
 </head>
 <body>
 <a class="skip" href="#conteudo">Pular para o conteúdo</a>
@@ -159,7 +165,7 @@ def footer(depth, wa_subject=None):
   <span>WhatsApp</span>
 </a>
 
-<script src="{pref(depth)}assets/site.js" defer></script>
+<script src="{pref(depth)}assets/site.js?v={ASSET_V}" defer></script>
 </body>
 </html>
 '''
