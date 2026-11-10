@@ -76,7 +76,7 @@
 
   // Ilustrações e seções: animam quando entram na tela
   var reduceMotion = window.matchMedia && window.matchMedia("(prefers-reduced-motion: reduce)").matches;
-  var revealSel = ".sec-head, .manifesto .cols, .cap-grid, .cap-wide, .deliv, .fit, .steps, .faq, .lead-grid, .related, .contact .cols, .callout .cols, .group-title, .princ-grid, .post-list, .article-body";
+  var revealSel = ".sec-head, .manifesto .cols, .cap-grid, .cap-wide, .deliv, .fit, .steps, .faq, .lead-grid, .related, .contact .cols, .callout .cols, .group-title, .princ-grid, .post-list, .article-body, .stat-grid, .numbers-chart";
   var targets = [].slice.call(document.querySelectorAll(".illo"));
   [].forEach.call(document.querySelectorAll(revealSel), function(el){ el.classList.add("reveal"); targets.push(el); });
   if (reduceMotion || !("IntersectionObserver" in window)) {

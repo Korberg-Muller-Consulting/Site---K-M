@@ -377,6 +377,42 @@ footer .bottom{display:flex;flex-wrap:wrap;justify-content:space-between;gap:12p
 .article-body .source{margin-top:56px;padding-top:24px;border-top:1px solid var(--line)}
 .article-body .source p{font-size:15px;line-height:1.6;color:var(--muted)}
 
+/* ================= Números e gráficos ================= */
+.numbers{background:var(--mist)}
+.stat-grid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:0 32px;border-top:2px solid var(--navy)}
+.stat{position:relative;padding:28px 0 8px}
+.stat::before{content:"";position:absolute;left:0;top:-2px;height:3px;width:0;background:var(--signal);transition:width .45s cubic-bezier(.2,.7,.2,1)}
+.stat:hover::before{width:100%}
+.stat-value{font-family:var(--serif);font-size:clamp(40px,4.4vw,56px);line-height:1;color:var(--navy);margin:0 0 12px}
+.stat-text{margin:0 0 10px;font-size:16px;color:var(--ink)}
+.stat-source{margin:0;font-size:13px;color:var(--muted)}
+.stat-source a,.chart-source a{color:var(--muted)}
+.stat-source a:hover,.chart-source a:hover{color:var(--signal)}
+@media (max-width:1000px){.stat-grid{grid-template-columns:repeat(2,minmax(0,1fr));gap:0 40px}}
+@media (max-width:560px){.stat-grid{grid-template-columns:1fr}}
+.numbers-chart{margin-top:64px;background:#fff;padding:32px 36px 24px}
+@media (max-width:560px){.numbers-chart{padding:24px 16px 16px}}
+.numbers-more{margin:28px 0 8px;font-weight:600}
+.numbers .chart-source{margin-top:8px}
+
+.chart{margin:36px 0}
+.numbers-chart .chart{margin:0}
+.chart-title{font-family:var(--serif);font-weight:500;font-size:26px;line-height:1.2;color:var(--navy);margin:0 0 6px}
+.chart-sub{margin:0 0 20px;color:var(--muted);font-size:15px}
+.chart svg{width:100%;max-width:520px;height:auto;display:block;font-family:var(--sans)}
+.chart .bar-mark{transition:opacity .2s ease}
+.chart svg:hover .bar-mark{opacity:.45}
+.chart svg .bar:hover .bar-mark{opacity:1}
+.chart-data{margin-top:10px;font-size:14px}
+.chart-data summary{cursor:pointer;color:var(--signal);font-weight:600}
+.chart-data table{margin-top:10px;border-collapse:collapse;min-width:280px}
+.chart-data th,.chart-data td{border-bottom:1px solid var(--line);padding:6px 12px 6px 0;text-align:left;font-weight:400}
+.chart-data td{text-align:right;font-variant-numeric:tabular-nums}
+.chart-source{font-size:13px;color:var(--muted);margin:10px 0 0;line-height:1.5}
+.article-body .chart{background:var(--mist);padding:28px 28px 20px}
+.article-body .chart-source{font-size:13px}
+@media (max-width:560px){.article-body .chart{padding:20px 12px 14px}}
+
 /* Rodapé com colunas de links */
 .foot-cols{display:flex;flex-wrap:wrap;gap:40px 56px}
 .foot-col{display:flex;flex-direction:column;gap:10px;min-width:180px}

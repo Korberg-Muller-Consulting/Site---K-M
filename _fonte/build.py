@@ -10,6 +10,7 @@ from urllib.parse import quote
 from content import SERVICES, GROUPS, ICONS
 from illos import SERVICE_ILLOS, HOME_WIDE
 from articles import ARTICLES
+from charts import STATS, CHART_PORTE, SRC_BCB
 
 MODE, OUT = sys.argv[1], sys.argv[2]
 SRC = os.path.dirname(os.path.abspath(__file__))
@@ -313,6 +314,21 @@ def build_home():
     </div>
   </section>
 
+  <section class="sec numbers" id="numeros" aria-labelledby="num-title">
+    <div class="wrap">
+      <div class="sec-head">
+        <h2 id="num-title">Eficiência em números</h2>
+        <p>Com a Selic em 13,75% ao ano e o Banco Central apontando desaceleração da atividade econômica, cada real gasto na operação pesa mais. Os dados de fontes oficiais mostram onde a tecnologia já gera eficiência.</p>
+      </div>
+      <div class="stat-grid">{STATS}
+      </div>
+      <div class="numbers-chart">{CHART_PORTE}
+      </div>
+      <p class="numbers-more"><a href="{page_href('insights/ia-reduzir-custos-eficiencia-dados/', d)}">Veja todos os dados e como transformar eficiência em redução de custo</a></p>
+      <p class="chart-source">Contexto econômico: {SRC_BCB[7:]}</p>
+    </div>
+  </section>
+
   <section class="sec caps" id="capacidades" aria-labelledby="caps-title">
     <div class="wrap">
       <div class="sec-head">
@@ -578,7 +594,7 @@ def build_service(s):
 # ---------- Insights ----------
 def post_cards(depth):
     out = ""
-    for a in sorted(ARTICLES, key=lambda x: x["date"], reverse=True):
+    for _, a in sorted(enumerate(ARTICLES), key=lambda t: (t[1]["date"], t[0]), reverse=True):
         href = page_href("insights/%s/" % a["slug"], depth)
         out += f'''
         <article class="post-card">
@@ -650,7 +666,7 @@ def build_article(a):
       </div>
       <div class="btn-row">
         <a class="btn btn-light" href="{home_anchor('contato', d)}">Agendar uma conversa</a>
-        <a class="btn btn-ghost" href="{wa_link('o artigo sobre o Rewired')}" target="_blank" rel="noopener">WhatsApp</a>
+        <a class="btn btn-ghost" href="{wa_link('o artigo "' + strip_amp(a["h1"]) + '"')}" target="_blank" rel="noopener">WhatsApp</a>
       </div>
     </div>
   </section>
@@ -691,7 +707,7 @@ def build_404():
 # ---------- arquivos de apoio ----------
 def build_assets():
     os.makedirs(os.path.join(OUT, "assets"), exist_ok=True)
-    css = "".join(open(os.path.join(SRC, f), encoding="utf-8").read() for f in ("base.css", "extra.css", "motion.css", "content.css"))
+    css = "".join(open(os.path.join(SRC, f), encoding="utf-8").read() for f in ("base.css", "extra.css", "motion.css", "content.css", "charts.css"))
     css += '''
 /* Rodapé com colunas de links */
 .foot-cols{display:flex;flex-wrap:wrap;gap:40px 56px}
