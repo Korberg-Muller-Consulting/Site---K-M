@@ -12,7 +12,7 @@ ICONS = {
 
 SERVICES = [
  {
-  "slug": "estrategia-de-ia", "group": "tec", "icon": "estrategia",
+  "slug": "estrategia-de-ia", "img_alt": "Líderes de uma empresa em uma sessão de planejamento com quadro e anotações", "group": "tec", "icon": "estrategia",
   "name": "Estratégia de IA",
   "card": "Diagnóstico de maturidade, mapa de oportunidades priorizado por impacto e um roteiro realista para os próximos 12 meses.",
   "title": "Estratégia de IA para empresas em Porto Alegre | Korberg &amp; Müller",
@@ -44,7 +44,7 @@ SERVICES = [
   ],
  },
  {
-  "slug": "automacao-de-processos", "group": "tec", "icon": "automacao",
+  "slug": "automacao-de-processos", "img_alt": "Profissional acompanhando fluxos de trabalho em um computador no escritório", "group": "tec", "icon": "automacao",
   "name": "Automação de processos",
   "card": "Fluxos que eliminam retrabalho em vendas, atendimento, financeiro e operações, integrados às ferramentas da equipe.",
   "title": "Automação de processos com IA em Porto Alegre | Korberg &amp; Müller",
@@ -76,7 +76,7 @@ SERVICES = [
   ],
  },
  {
-  "slug": "agentes-de-ia", "group": "tec", "icon": "agentes",
+  "slug": "agentes-de-ia", "img_alt": "Pessoa atendendo clientes pelo celular em um pequeno negócio", "group": "tec", "icon": "agentes",
   "name": "Agentes de IA sob medida",
   "card": "Agentes que atendem clientes no WhatsApp, pesquisam, redigem, analisam e executam tarefas com as regras e o tom da sua empresa.",
   "title": "Agentes de IA para empresas em Porto Alegre | Korberg &amp; Müller",
@@ -113,7 +113,7 @@ SERVICES = [
   ],
  },
  {
-  "slug": "integracoes", "group": "tec", "icon": "integracoes",
+  "slug": "integracoes", "img_alt": "Tela de computador com painéis de indicadores e gráficos de negócio", "group": "tec", "icon": "integracoes",
   "name": "Dados e integrações",
   "card": "Conectamos CRM, planilhas e ferramentas de gestão de projetos, como Trello, ClickUp e Notion, para que a informação circule sem cópia manual.",
   "title": "Integração de sistemas e dados em Porto Alegre | Korberg &amp; Müller",
@@ -144,7 +144,7 @@ SERVICES = [
   ],
  },
  {
-  "slug": "marketing-e-funis", "group": "tec", "icon": "marketing",
+  "slug": "marketing-e-funis", "img_alt": "Equipe planejando conteúdo e campanhas de marketing", "group": "tec", "icon": "marketing",
   "name": "Marketing e funis de vendas",
   "card": "Conteúdo para redes sociais, nutrição de leads e funis automatizados que geram oportunidades com previsibilidade.",
   "title": "Automação de marketing e funil de vendas em Porto Alegre | Korberg &amp; Müller",
@@ -175,7 +175,7 @@ SERVICES = [
   ],
  },
  {
-  "slug": "governanca-de-ia", "group": "tec", "icon": "governanca",
+  "slug": "governanca-de-ia", "img_alt": "Profissional revisando configurações de segurança em um notebook", "group": "tec", "icon": "governanca",
   "name": "Governança e segurança",
   "card": "Políticas de uso de IA, controle de acessos e adequação à LGPD, tudo revisado antes de qualquer solução entrar em produção.",
   "title": "Governança de IA e LGPD para empresas | Korberg &amp; Müller",
@@ -206,7 +206,7 @@ SERVICES = [
   ],
  },
  {
-  "slug": "consultoria-de-rh", "group": "gestao",
+  "slug": "consultoria-de-rh", "img_alt": "Grupo de profissionais em um treinamento de liderança", "group": "gestao",
   "name": "Consultoria de RH",
   "offer": "CHRO as a Service",
   "card": "Um diretor de RH sob demanda, neutro e independente, para estruturar a área de pessoas, desenvolver lideranças e apoiar a busca de executivos.",

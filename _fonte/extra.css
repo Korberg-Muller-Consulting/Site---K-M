@@ -75,3 +75,11 @@
 
 /* Página 404 */
 .notfound .wrap{padding-top:120px;padding-bottom:140px}
+
+/* Fotos */
+.wide-figure{margin:64px 0 0}
+.wide-photo{width:100%;height:auto;aspect-ratio:7/3;object-fit:cover}
+.page-hero.has-photo .wrap{display:grid;grid-template-columns:minmax(0,1.25fr) minmax(0,.75fr);gap:56px;align-items:center}
+.hero-figure{margin:0}
+.hero-photo{width:100%;height:auto;aspect-ratio:4/5;object-fit:cover}
+@media (max-width:900px){.page-hero.has-photo .wrap{grid-template-columns:1fr;gap:40px}.hero-figure{max-width:340px}}

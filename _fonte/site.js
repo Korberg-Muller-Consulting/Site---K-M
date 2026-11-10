@@ -73,4 +73,31 @@
       status.textContent = "Abrimos seu aplicativo de e-mail com a mensagem pronta. Se ele não abrir, escreva para " + CONTACT_EMAIL + ".";
     });
   }
+
+  // Ilustrações e seções: animam quando entram na tela
+  var reduceMotion = window.matchMedia && window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+  var revealSel = ".sec-head, .manifesto .cols, .cap-grid, .cap-wide, .deliv, .fit, .steps, .faq, .lead-grid, .related, .contact .cols, .callout .cols, .group-title";
+  var targets = [].slice.call(document.querySelectorAll(".illo"));
+  [].forEach.call(document.querySelectorAll(revealSel), function(el){ el.classList.add("reveal"); targets.push(el); });
+  if (reduceMotion || !("IntersectionObserver" in window)) {
+    targets.forEach(function(el){ el.classList.add("in-view"); });
+  } else {
+    var io = new IntersectionObserver(function(entries){
+      entries.forEach(function(en){ if (en.isIntersecting) { en.target.classList.add("in-view"); io.unobserve(en.target); } });
+    }, { threshold: 0.15, rootMargin: "0px 0px -40px 0px" });
+    targets.forEach(function(el){ io.observe(el); });
+  }
+
+  // Ilustrações reagem ao mouse (camadas se movem em profundidades diferentes)
+  if (!reduceMotion) {
+    [].forEach.call(document.querySelectorAll(".illo-wrap"), function(wrap){
+      var svg = wrap.querySelector(".illo"); if (!svg) return;
+      wrap.addEventListener("pointermove", function(e){
+        var r = wrap.getBoundingClientRect();
+        svg.style.setProperty("--mx", (((e.clientX - r.left) / r.width) - .5).toFixed(3));
+        svg.style.setProperty("--my", (((e.clientY - r.top) / r.height) - .5).toFixed(3));
+      });
+      wrap.addEventListener("pointerleave", function(){ svg.style.setProperty("--mx", 0); svg.style.setProperty("--my", 0); });
+    });
+  }
 })();

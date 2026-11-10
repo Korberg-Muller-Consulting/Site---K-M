@@ -8,6 +8,7 @@ Uso:
 import sys, os, json, shutil, datetime
 from urllib.parse import quote
 from content import SERVICES, GROUPS, ICONS
+from illos import SERVICE_ILLOS, HOME_WIDE
 
 MODE, OUT = sys.argv[1], sys.argv[2]
 SRC = os.path.dirname(os.path.abspath(__file__))
@@ -85,6 +86,7 @@ def head(depth, title, desc, path, jsonld, extra_robots=None):
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700&amp;family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;0,6..72,600;1,6..72,400&amp;display=swap" rel="stylesheet">
+<script src="{p}assets/js-flag.js"></script>
 <link rel="stylesheet" href="{p}assets/site.css">
 </head>
 <body>
@@ -205,12 +207,24 @@ def services_groups(depth):
       </div>'''
     return out
 
+IMG_DIR_CANDIDATES = []
+def has_img(name):
+    return any(os.path.exists(os.path.join(d, "images", name)) for d in [OUT] + IMG_DIR_CANDIDATES)
+def img_tag(name, alt, w, h, depth, cls="", eager=False):
+    if not has_img(name): return ""
+    load = 'fetchpriority="high"' if eager else 'loading="lazy"'
+    return f'<img class="{cls}" src="{pref(depth)}images/{name}" width="{w}" height="{h}" alt="{esc(alt)}" {load} decoding="async">'
+
 def write(path, html):
     full = os.path.join(OUT, path)
     os.makedirs(os.path.dirname(full) or OUT, exist_ok=True)
     open(full, "w", encoding="utf-8").write(html)
 
 # ---------- página inicial ----------
+def wide_photo(name, alt, depth):
+    t = img_tag(name, alt, 1600, 686, depth, "wide-photo") or HOME_WIDE
+    return f"\n      <figure class=\"wide-figure illo-wrap\">{t}</figure>"
+
 def build_home():
     d = 0
     org = {
@@ -278,7 +292,7 @@ def build_home():
           <p>Em seguida, desenhamos e construímos a solução com a sua equipe, integrada aos sistemas que a empresa já utiliza, com segurança de dados desde o primeiro dia e indicadores que mostram o retorno.</p>
           <p>Somos uma consultoria enxuta por opção: quem desenha a estratégia é quem acompanha a entrega. Atendemos pessoalmente pequenas e médias empresas de Porto Alegre e região.</p>
         </div>
-      </div>
+      </div>{wide_photo('abordagem.jpg', 'Consultores e equipe do cliente reunidos em torno de uma mesa de trabalho', d)}
     </div>
   </section>
 
@@ -448,10 +462,13 @@ def build_service(s):
         related = [x for x in related if x["group"] == "tec"][:2] + [BY_SLUG["consultoria-de-rh"]]
     rel = "".join(f'\n        <li><a href="{page_href("servicos/%s/" % x["slug"], d)}">{x["name"]}</a></li>' for x in related)
     alt_bg = "" if not s.get("callout") else ""
+    photo = img_tag(s["slug"] + ".jpg", s.get("img_alt", ""), 960, 1200, d, "hero-photo", eager=True) or SERVICE_ILLOS.get(s["slug"], "")
+    hero_cls = "page-hero has-photo" if photo else "page-hero"
+    photo_html = f'\n      <figure class="hero-figure illo-wrap">{photo}</figure>' if photo else ""
     html = head(d, s["title"], s["desc"], path, lds) + header(d, "servicos") + f'''
 <main id="conteudo">
-  <section class="page-hero" aria-labelledby="page-title">
-    <div class="wrap">
+  <section class="{hero_cls}" aria-labelledby="page-title">
+    <div class="wrap"><div class="hero-text">
       <ol class="crumbs" aria-label="Você está em"><li><a href="{page_href('', d)}">Início</a></li><li><a href="{page_href('servicos/', d)}">Serviços</a></li><li aria-current="page">{s["name"]}</li></ol>
       <h1 id="page-title">{s["h1"]}</h1>{offer}
       <p class="lede">{s["lede"]}</p>
@@ -459,6 +476,7 @@ def build_service(s):
         <a class="btn btn-light" href="{home_anchor('contato', d)}">Agendar uma conversa</a>
         <a class="btn btn-ghost" href="{wa_link(strip_amp(s['name']))}" target="_blank" rel="noopener">Conversar no WhatsApp</a>
       </div>
+    </div>{photo_html}
     </div>
   </section>
 {callout}{intro}
@@ -554,7 +572,7 @@ def build_404():
 # ---------- arquivos de apoio ----------
 def build_assets():
     os.makedirs(os.path.join(OUT, "assets"), exist_ok=True)
-    css = open(os.path.join(SRC, "base.css"), encoding="utf-8").read() + open(os.path.join(SRC, "extra.css"), encoding="utf-8").read()
+    css = "".join(open(os.path.join(SRC, f), encoding="utf-8").read() for f in ("base.css", "extra.css", "motion.css"))
     css += '''
 /* Rodapé com colunas de links */
 .foot-cols{display:flex;flex-wrap:wrap;gap:40px 56px}
@@ -567,6 +585,7 @@ def build_assets():
 '''
     open(os.path.join(OUT, "assets/site.css"), "w", encoding="utf-8").write(css)
     shutil.copy(os.path.join(SRC, "site.js"), os.path.join(OUT, "assets/site.js"))
+    open(os.path.join(OUT, "assets/js-flag.js"), "w").write('document.documentElement.classList.add("js");\n')
 
 def build_seo():
     pages = [("", "1.0"), ("servicos/", "0.9")] + [("servicos/%s/" % s["slug"], "0.8") for s in SERVICES]
