@@ -9,6 +9,7 @@ import sys, os, json, shutil, datetime
 from urllib.parse import quote
 from content import SERVICES, GROUPS, ICONS
 from illos import SERVICE_ILLOS, HOME_WIDE
+from articles import ARTICLES
 
 MODE, OUT = sys.argv[1], sys.argv[2]
 SRC = os.path.dirname(os.path.abspath(__file__))
@@ -107,6 +108,7 @@ def header(depth, current=None):
     </button>
     <nav class="nav" id="menu" aria-label="Principal">
       <a href="{page_href('servicos/', depth)}"{cur('servicos')}>Serviços</a>
+      <a href="{page_href('insights/', depth)}"{cur('insights')}>Insights</a>
       <a href="{home_anchor('abordagem', depth)}">Abordagem</a>
       <a href="{home_anchor('metodo', depth)}">Método</a>
       <a href="{home_anchor('lideranca', depth)}">Liderança</a>
@@ -137,6 +139,7 @@ def footer(depth, wa_subject=None):
       <nav class="foot-col" aria-label="Institucional">
         <p class="foot-title">Institucional</p>
           <a href="{page_href('servicos/', depth)}">Todos os serviços</a>
+          <a href="{page_href('insights/', depth)}">Insights</a>
           <a href="{home_anchor('abordagem', depth)}">Abordagem</a>
           <a href="{home_anchor('lideranca', depth)}">Liderança</a>
           <a href="{home_anchor('contato', depth)}">Contato</a>
@@ -288,11 +291,25 @@ def build_home():
           <blockquote>Tecnologia de ponta só gera valor quando muda a forma como a empresa decide e opera.</blockquote>
         </div>
         <div>
-          <p>A Korberg &amp; Müller une visão de gestão, cuidado com as pessoas e domínio técnico. Começamos pelo problema de negócio, não pela ferramenta: onde está o gargalo, quanto ele custa e qual decisão precisa ser agilizada.</p>
+          <p>A Korberg &amp; Müller traduz para pequenas e médias empresas os métodos que as grandes consultorias aplicam em grandes organizações. Unimos visão de gestão, cuidado com as pessoas e domínio técnico, e começamos pelo problema de negócio, não pela ferramenta: onde está o gargalo, quanto ele custa e qual decisão precisa ser agilizada.</p>
           <p>Em seguida, desenhamos e construímos a solução com a sua equipe, integrada aos sistemas que a empresa já utiliza, com segurança de dados desde o primeiro dia e indicadores que mostram o retorno.</p>
           <p>Somos uma consultoria enxuta por opção: quem desenha a estratégia é quem acompanha a entrega. Atendemos pessoalmente pequenas e médias empresas de Porto Alegre e região.</p>
         </div>
       </div>{wide_photo('abordagem.jpg', 'Consultores e equipe do cliente reunidos em torno de uma mesa de trabalho', d)}
+    </div>
+  </section>
+
+  <section class="sec principles" aria-labelledby="princ-title">
+    <div class="wrap">
+      <div class="sec-head">
+        <h2 id="princ-title">Estratégia de grande empresa, no tamanho da sua</h2>
+        <p>Os métodos das maiores consultorias do mundo foram desenhados para organizações com milhares de pessoas. Nós os adaptamos à realidade de uma pequena ou média empresa.</p>
+      </div>
+      <div class="princ-grid">
+        <article><h3>Escopo proporcional</h3><p>Uma ou duas áreas por vez, escolhidas pelo valor que geram e pela facilidade de implantar. Nada de projetos que tentam mudar tudo de uma só vez.</p></article>
+        <article><h3>Pessoas e tecnologia juntas</h3><p>Ferramenta nenhuma funciona sem uma equipe preparada. Por isso cuidamos da gestão de pessoas e da tecnologia no mesmo projeto.</p></article>
+        <article><h3>Adoção faz parte do projeto</h3><p>Treinamento, ajuste das rotinas e acompanhamento até a solução ser usada no dia a dia. Uma solução que ninguém usa não gera resultado.</p></article>
+      </div>
     </div>
   </section>
 
@@ -309,14 +326,25 @@ def build_home():
     <div class="wrap">
       <div class="sec-head">
         <h2 id="metodo-title">Como implementamos IA na sua empresa</h2>
-        <p>Um ciclo curto e mensurável. Cada etapa termina com uma entrega que a liderança pode avaliar antes de seguirmos para a próxima.</p>
+        <p>Um ciclo curto e mensurável, com indicadores definidos no início. Cada etapa termina com uma entrega que a liderança pode avaliar antes de seguirmos para a próxima.</p>
       </div>
       <ol class="steps">
         <li><h3>Diagnóstico</h3><p>Visitas presenciais, entrevistas e leitura dos processos e dos dados para identificar onde a IA gera mais valor.</p></li>
         <li><h3>Desenho</h3><p>Solução, arquitetura, custos e indicadores de sucesso definidos com os responsáveis.</p></li>
         <li><h3>Construção</h3><p>Desenvolvimento em ciclos curtos, com testes reais e revisão de segurança.</p></li>
-        <li><h3>Escala</h3><p>Treinamento da equipe, acompanhamento dos resultados e expansão para novas áreas.</p></li>
+        <li><h3>Adoção e escala</h3><p>Treinamento da equipe, revisões periódicas de resultado e expansão para novas áreas. O projeto só termina quando a solução faz parte da rotina.</p></li>
       </ol>
+    </div>
+  </section>
+
+  <section class="sec insights-teaser" aria-labelledby="ins-title">
+    <div class="wrap">
+      <div class="sec-head">
+        <h2 id="ins-title">Insights</h2>
+        <p>Leituras e reflexões sobre gestão, pessoas e inteligência artificial, traduzidas para pequenas e médias empresas.</p>
+      </div>
+      <div class="post-list">{post_cards(d)}
+      </div>
     </div>
   </section>
 
@@ -547,6 +575,97 @@ def build_service(s):
 ''' + footer(d, strip_amp(s["name"]))
     write(path + "index.html", html)
 
+# ---------- Insights ----------
+def post_cards(depth):
+    out = ""
+    for a in sorted(ARTICLES, key=lambda x: x["date"], reverse=True):
+        href = page_href("insights/%s/" % a["slug"], depth)
+        out += f'''
+        <article class="post-card">
+          <p class="post-meta"><time datetime="{a['date']}">{a['date_br']}</time>, {a['read']}</p>
+          <h3><a href="{href}">{a['h1']}</a></h3>
+          <p>{a['card']}</p>
+          <span class="more" aria-hidden="true">Ler o artigo</span>
+        </article>'''
+    return out
+
+def build_insights_hub():
+    d = 1
+    path = "insights/"
+    lds = [crumbs_ld([("Início", ""), ("Insights", path)])]
+    html = head(d, "Insights sobre gestão, pessoas e IA para PMEs | Korberg &amp; Müller",
+                "Artigos da Korberg & Müller sobre gestão, pessoas e inteligência artificial para pequenas e médias empresas.",
+                path, lds) + header(d, "insights") + f'''
+<main id="conteudo">
+  <section class="page-hero" aria-labelledby="page-title">
+    <div class="wrap">
+      <ol class="crumbs" aria-label="Você está em"><li><a href="{page_href('', d)}">Início</a></li><li aria-current="page">Insights</li></ol>
+      <h1 id="page-title">Insights</h1>
+      <p class="lede">Leituras e reflexões sobre gestão, pessoas e inteligência artificial, com o que as grandes empresas fazem traduzido para a realidade de pequenas e médias empresas.</p>
+    </div>
+  </section>
+  <section class="sec" aria-label="Artigos">
+    <div class="wrap">
+      <div class="post-list">{post_cards(d)}
+      </div>
+    </div>
+  </section>
+</main>
+''' + footer(d)
+    write("insights/index.html", html)
+
+def build_article(a):
+    d = 2
+    path = "insights/%s/" % a["slug"]
+    art_ld = {"@context": "https://schema.org", "@type": "Article", "headline": strip_amp(a["h1"]),
+              "description": strip_amp(a["desc"]), "datePublished": a["date"], "dateModified": a["date"],
+              "inLanguage": "pt-BR", "mainEntityOfPage": url(path), "image": url("og-image.png"),
+              "author": ORG_REF, "publisher": {**ORG_REF, "logo": {"@type": "ImageObject", "url": url("icon-192.png")}}}
+    lds = [art_ld, crumbs_ld([("Início", ""), ("Insights", "insights/"), (strip_amp(a["h1"]), path)])]
+    rel = "".join(f'\n        <li><a href="{page_href("servicos/%s/" % sl, d)}">{BY_SLUG[sl]["name"]}</a></li>' for sl in a["related"])
+    html = head(d, a["title"], a["desc"], path, lds) + header(d, "insights") + f'''
+<main id="conteudo">
+  <article>
+  <section class="page-hero" aria-labelledby="page-title">
+    <div class="wrap">
+      <ol class="crumbs" aria-label="Você está em"><li><a href="{page_href('', d)}">Início</a></li><li><a href="{page_href('insights/', d)}">Insights</a></li><li aria-current="page">Artigo</li></ol>
+      <h1 id="page-title">{a["h1"]}</h1>
+      <p class="lede">{a["lede"]}</p>
+      <p class="post-meta post-meta-dark">Por Korberg &amp; Müller, <time datetime="{a['date']}">{a['date_br']}</time>, {a['read']}</p>
+    </div>
+  </section>
+  <section class="sec article-sec">
+    <div class="wrap">
+      <div class="article-body">{a["body"]}
+      </div>
+    </div>
+  </section>
+  </article>
+
+  <section class="cta-band" aria-labelledby="cta-title">
+    <div class="wrap">
+      <div>
+        <h2 id="cta-title">Quer aplicar isso na sua empresa?</h2>
+        <p>Conte o seu desafio. Respondemos em até dois dias úteis e, se fizer sentido, marcamos uma visita.</p>
+      </div>
+      <div class="btn-row">
+        <a class="btn btn-light" href="{home_anchor('contato', d)}">Agendar uma conversa</a>
+        <a class="btn btn-ghost" href="{wa_link('o artigo sobre o Rewired')}" target="_blank" rel="noopener">WhatsApp</a>
+      </div>
+    </div>
+  </section>
+
+  <section class="sec" aria-labelledby="rel-title" style="padding-top:88px;padding-bottom:88px">
+    <div class="wrap">
+      <h2 id="rel-title" style="font-size:clamp(28px,3vw,38px);margin-bottom:24px">Serviços relacionados</h2>
+      <ul class="related">{rel}
+      </ul>
+    </div>
+  </section>
+</main>
+''' + footer(d)
+    write(path + "index.html", html)
+
 # ---------- 404 ----------
 def build_404():
     global ABS
@@ -572,7 +691,7 @@ def build_404():
 # ---------- arquivos de apoio ----------
 def build_assets():
     os.makedirs(os.path.join(OUT, "assets"), exist_ok=True)
-    css = "".join(open(os.path.join(SRC, f), encoding="utf-8").read() for f in ("base.css", "extra.css", "motion.css"))
+    css = "".join(open(os.path.join(SRC, f), encoding="utf-8").read() for f in ("base.css", "extra.css", "motion.css", "content.css"))
     css += '''
 /* Rodapé com colunas de links */
 .foot-cols{display:flex;flex-wrap:wrap;gap:40px 56px}
@@ -588,7 +707,7 @@ def build_assets():
     open(os.path.join(OUT, "assets/js-flag.js"), "w").write('document.documentElement.classList.add("js");\n')
 
 def build_seo():
-    pages = [("", "1.0"), ("servicos/", "0.9")] + [("servicos/%s/" % s["slug"], "0.8") for s in SERVICES]
+    pages = [("", "1.0"), ("servicos/", "0.9")] + [("servicos/%s/" % s["slug"], "0.8") for s in SERVICES] + [("insights/", "0.7")] + [("insights/%s/" % a["slug"], "0.7") for a in ARTICLES]
     urls = "\n".join(f"  <url>\n    <loc>{url(p)}</loc>\n    <lastmod>{TODAY}</lastmod>\n  </url>" for p, _ in pages)
     open(os.path.join(OUT, "sitemap.xml"), "w").write(f'<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n{urls}\n</urlset>\n')
     open(os.path.join(OUT, "robots.txt"), "w").write(f"User-agent: *\nAllow: /\nDisallow: /_fonte/\n\nSitemap: {url('sitemap.xml')}\n")
@@ -607,7 +726,8 @@ def build_seo():
   Cache-Control: public, max-age=3600
 """)
 
-build_assets(); build_home(); build_hub()
+build_assets(); build_home(); build_hub(); build_insights_hub()
+for a in ARTICLES: build_article(a)
 for s in SERVICES: build_service(s)
 build_404(); build_seo()
 print("ok:", MODE, OUT)

@@ -18,11 +18,11 @@ SERVICES = [
   "title": "Estratégia de IA para empresas em Porto Alegre | Korberg &amp; Müller",
   "desc": "Estratégia de IA para pequenas e médias empresas de Porto Alegre: diagnóstico presencial, oportunidades priorizadas e um plano de adoção com custos e responsáveis.",
   "h1": "Estratégia de IA para pequenas e médias empresas",
-  "lede": "Antes de comprar ferramentas, descubra onde a inteligência artificial gera retorno no seu negócio. Fazemos o diagnóstico dentro da sua empresa e entregamos um plano de adoção com prioridades, custos e responsáveis.",
+  "lede": "Antes de comprar ferramentas, descubra onde a inteligência artificial gera retorno no seu negócio. Aplicamos os métodos que as grandes consultorias usam em grandes empresas, no tamanho certo para a sua: poucas áreas por vez, investimento proporcional e um plano com prioridades, custos e responsáveis.",
   "deliv": [
     ("Diagnóstico de maturidade", "Processos, dados, equipe e ferramentas atuais avaliados em visitas e entrevistas com as lideranças e com quem executa o trabalho."),
-    ("Mapa de oportunidades", "Usos de IA priorizados por impacto, esforço e risco, para que a empresa saiba o que fazer primeiro e o que pode esperar."),
-    ("Roteiro de 12 meses", "Sequência de projetos com estimativa de custo, responsáveis e indicadores para acompanhar o retorno de cada etapa."),
+    ("Mapa de oportunidades", "Usos de IA priorizados por valor (impacto no cliente, ganho financeiro e rapidez do retorno) e por viabilidade (apoio da liderança, dados disponíveis e facilidade de adoção pela equipe)."),
+    ("Roteiro de 12 meses", "Começando por uma ou duas áreas do negócio, com estimativa de custo, responsáveis e indicadores para acompanhar o retorno de cada etapa."),
     ("Política de uso de IA", "Regras claras para a equipe usar ferramentas como ChatGPT, Claude e Gemini com segurança e sem expor dados da empresa."),
   ],
   "fit": [
@@ -30,6 +30,8 @@ SERVICES = [
     "Há muitas ideias de uso de IA e nenhuma prioridade definida.",
     "A diretoria quer investir, mas precisa de um plano com custos e retorno estimado.",
     "Cada área adota ferramentas por conta própria, sem padrão e sem cuidado com os dados.",
+    "Projetos de IA funcionaram no teste, mas nunca chegaram à operação.",
+    "A empresa quer aplicar o que as grandes fazem, mas sem a estrutura e o orçamento delas.",
   ],
   "steps": [
     ("Imersão", "Visitas presenciais e entrevistas com sócios, lideranças e equipe."),
@@ -38,6 +40,7 @@ SERVICES = [
     ("Plano", "Roteiro, orçamento e indicadores aprovados para execução."),
   ],
   "faq": [
+    ("Por onde começar?", "Por uma ou duas áreas em que o problema é claro e o retorno aparece rápido, como atendimento, comercial ou financeiro. Tentar transformar tudo de uma vez costuma gerar custo alto e pouca adoção."),
     ("Quanto tempo leva o diagnóstico?", "Depende do porte da empresa e do número de áreas envolvidas. O prazo é definido na proposta, depois da primeira conversa."),
     ("Preciso ter dados organizados para começar?", "Não. Avaliar a situação dos dados faz parte do diagnóstico, e o plano inclui os passos para organizá-los quando for necessário."),
     ("Vocês indicam quais ferramentas contratar?", "Sim, mas só depois de entender o problema. A recomendação considera também o que a empresa já possui e opções gratuitas ou de baixo custo."),
@@ -56,12 +59,15 @@ SERVICES = [
     ("Fluxos automatizados", "Rotinas entre sistemas, planilhas, e-mail e WhatsApp, construídas com ferramentas de automação como n8n, Make ou Zapier, escolhidas conforme o caso."),
     ("IA nas etapas certas", "Leitura de documentos, classificação de pedidos e resumo de atendimentos nos pontos em que regras fixas não bastam."),
     ("Monitoramento e documentação", "Alertas em caso de falha, registro das execuções e um manual para a equipe acompanhar cada automação."),
+    ("Adoção pela equipe", "Treinamento, ajuste das rotinas e acompanhamento até a automação fazer parte do dia a dia. Uma automação que ninguém usa não gera resultado."),
+    ("Soluções reaproveitáveis", "Fluxos desenhados para serem replicados em outras áreas ou unidades, sem começar do zero a cada projeto."),
   ],
   "fit": [
     "A equipe copia os mesmos dados de um sistema para outro.",
     "Relatórios são montados à mão toda semana.",
     "Pedidos e solicitações se perdem entre e-mail, WhatsApp e planilhas.",
     "Um processo importante depende de uma única pessoa.",
+    "A empresa já testou automações, mas elas nunca entraram de fato na rotina.",
   ],
   "steps": [
     ("Mapeamento", "Acompanhamos o processo na prática, junto de quem o executa."),
@@ -123,7 +129,7 @@ SERVICES = [
   "deliv": [
     ("Integrações entre sistemas", "Sistemas conectados por API ou por ferramentas de automação, com a informação atualizada automaticamente nos dois lados."),
     ("Painéis de indicadores", "Dados de vendas, financeiro e operação reunidos em um só lugar, atualizados sem trabalho manual."),
-    ("Organização de dados", "Padronização de cadastros, eliminação de duplicidades e definição de qual sistema é a fonte oficial de cada informação."),
+    ("Organização de dados", "Padronização de cadastros, eliminação de duplicidades e conjuntos de dados prontos para uso, que servem a vários relatórios e projetos sem retrabalho."),
     ("Gestão de projetos integrada", "Trello, ClickUp ou Notion conectados a e-mail, formulários e CRM, para que as tarefas nasçam onde o trabalho acontece."),
   ],
   "fit": [
@@ -186,7 +192,7 @@ SERVICES = [
     ("Política de uso de IA", "O que pode e o que não pode ser feito com ferramentas de IA na empresa, escrito em linguagem clara para toda a equipe."),
     ("Controle de acessos", "Cada pessoa e cada sistema com acesso apenas ao que é necessário para o seu trabalho."),
     ("LGPD em projetos de IA", "Mapeamento dos dados pessoais envolvidos, das bases legais e dos cuidados na escolha de fornecedores."),
-    ("Revisão de segurança antes de publicar", "Chaves de acesso, integrações e permissões verificadas antes de qualquer solução entrar em produção."),
+    ("Segurança desde o início do projeto", "Riscos avaliados no desenho da solução, e não depois. Chaves de acesso, integrações e permissões verificadas antes de qualquer solução entrar em produção."),
   ],
   "fit": [
     "Funcionários usam ferramentas de IA com dados de clientes, sem orientação.",
@@ -210,7 +216,7 @@ SERVICES = [
   "name": "Consultoria de RH",
   "offer": "CHRO as a Service",
   "card": "Um diretor de RH sob demanda, neutro e independente, para estruturar a área de pessoas, desenvolver lideranças e apoiar a busca de executivos.",
-  "card_list": ["Estruturação da área de RH", "Processos internos de RH", "Treinamento e desenvolvimento", "Busca de executivos (headhunting)"],
+  "card_list": ["Estruturação da área de RH", "Processos internos de RH", "Treinamento e desenvolvimento", "Busca de executivos (headhunting)", "Competências digitais da equipe"],
   "title": "Consultoria de RH em Porto Alegre: CHRO as a Service | Korberg &amp; Müller",
   "desc": "Consultoria de RH para pequenas e médias empresas de Porto Alegre: um diretor de RH sob demanda, neutro e independente, para estruturar a área de pessoas, treinamento e busca de executivos.",
   "h1": "Consultoria de RH para pequenas e médias empresas",
@@ -225,6 +231,7 @@ SERVICES = [
     ("Processos internos de RH", "Recrutamento e seleção, integração de novos funcionários, avaliação de desempenho, cargos e salários e desligamentos."),
     ("Treinamento e desenvolvimento", "Programas de capacitação, desenvolvimento de lideranças e planos individuais de crescimento."),
     ("Busca de executivos", "Apoio na definição do perfil, na busca ativa (headhunting), na avaliação e na escolha de executivos e cargos de liderança."),
+    ("Mapeamento de competências digitais", "Avaliação das competências reais da equipe, e não só dos cargos, definição do que manter dentro da empresa e do que buscar fora, e um plano de desenvolvimento ligado aos projetos de tecnologia."),
     ("RH com tecnologia", "Processos de admissão, solicitações e indicadores de pessoas automatizados com o apoio da frente de tecnologia da Korberg &amp; Müller."),
   ],
   "fit": [
@@ -234,6 +241,7 @@ SERVICES = [
     "A empresa vai contratar um executivo ou uma liderança-chave.",
     "Pessoas foram promovidas a líderes sem preparo para a função.",
     "A rotatividade da equipe está alta e ninguém sabe exatamente por quê.",
+    "A empresa vai adotar IA e precisa preparar as pessoas para a mudança.",
   ],
   "steps": [
     ("Diagnóstico", "Entrevistas com sócios, lideranças e equipe, e leitura dos processos de pessoas."),

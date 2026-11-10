@@ -1,0 +1,36 @@
+
+/* ================= Princípios, Insights e artigos ================= */
+.principles{background:var(--paper);padding-top:0}
+.princ-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:0 48px;border-top:2px solid var(--navy)}
+.princ-grid article{position:relative;padding:32px 0 8px}
+.princ-grid h3{font-family:var(--serif);font-weight:500;font-size:26px;line-height:1.2;margin:0 0 12px;color:var(--navy)}
+.princ-grid p{margin:0;color:var(--muted);font-size:16px}
+.princ-grid article::before{content:"";position:absolute;left:0;top:-2px;height:3px;width:0;background:var(--signal);transition:width .45s cubic-bezier(.2,.7,.2,1)}
+.princ-grid article:hover::before{width:100%}
+@media (max-width:860px){.princ-grid{grid-template-columns:1fr}}
+
+.insights-teaser{background:var(--mist)}
+.post-list{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:32px}
+@media (max-width:860px){.post-list{grid-template-columns:1fr}}
+.post-card{position:relative;background:#fff;padding:32px;border-top:3px solid var(--navy);transition:transform .3s cubic-bezier(.2,.7,.2,1),box-shadow .3s ease,border-color .3s ease}
+.post-card:hover{transform:translateY(-4px);box-shadow:0 14px 30px rgba(10,35,66,.10);border-top-color:var(--signal)}
+.post-card h3{font-family:var(--serif);font-weight:500;font-size:26px;line-height:1.2;margin:0 0 12px;color:var(--navy)}
+.post-card h3 a{color:inherit;text-decoration:none}
+.post-card h3 a::after{content:"";position:absolute;inset:0}
+.post-card p{margin:0;color:var(--muted);font-size:16px}
+.post-card .more{display:inline-block;margin-top:16px;font-weight:600;font-size:15px;color:var(--signal);background:linear-gradient(currentColor,currentColor) 0 100%/0 1px no-repeat;padding-bottom:2px;transition:background-size .35s ease}
+.post-card:hover .more{background-size:100% 1px}
+.post-card:focus-within{outline:3px solid var(--signal-lt);outline-offset:3px}
+.post-card h3 a:focus-visible{outline:none}
+.post-meta{font-size:14px;color:var(--muted);margin:0 0 12px}
+.post-meta-dark{color:#9FB2CC;margin:0}
+
+.article-sec{padding-top:88px}
+.article-body{max-width:70ch;font-size:18px;line-height:1.75}
+.article-body p{margin:0 0 22px;color:var(--ink)}
+.article-body h2{font-size:clamp(28px,3vw,36px);margin:56px 0 18px}
+.article-body ul{margin:0 0 22px;padding-left:22px}
+.article-body li{margin-bottom:8px}
+.article-body strong{color:var(--navy)}
+.article-body .source{margin-top:56px;padding-top:24px;border-top:1px solid var(--line)}
+.article-body .source p{font-size:15px;line-height:1.6;color:var(--muted)}
