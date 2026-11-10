@@ -36,6 +36,7 @@
   "slogan": "Inteligência artificial, resultado real.",
   "description": "Consultoria empresarial e de inteligência artificial para pequenas e médias empresas de Porto Alegre e região, com atendimento presencial: estratégia de IA, automação de processos, agentes de IA sob medida, dados e integrações, marketing e funis de vendas, governança e segurança de dados.",
   "url": "https://site---k-m.pages.dev/",
+  "telephone": "+55-51-99810-7741",
   "logo": "https://site---k-m.pages.dev/icon-192.png",
   "image": "https://site---k-m.pages.dev/og-image.png",
   "address": { "@type": "PostalAddress", "addressLocality": "Porto Alegre", "addressRegion": "RS", "addressCountry": "BR" },
@@ -218,8 +219,16 @@ form{background:#fff;padding:40px;border-top:3px solid var(--navy)}
 .form-status{margin:16px 0 0;font-size:15px;color:var(--navy);font-weight:600}
 .form-status:empty{display:none}
 
+/* Botão flutuante de WhatsApp */
+.wa-float{position:fixed;right:24px;bottom:24px;bottom:calc(24px + env(safe-area-inset-bottom));z-index:60;display:inline-flex;align-items:center;gap:10px;min-height:52px;padding:0 20px 0 16px;background:#0E7A3E;color:#fff;font:600 15px/1 var(--sans);text-decoration:none;border-radius:999px;box-shadow:0 6px 20px rgba(10,35,66,.28)}
+.wa-float:hover{background:#0B6332;color:#fff}
+.wa-float:focus-visible{outline:3px solid #fff;outline-offset:3px;box-shadow:0 0 0 6px #0E7A3E}
+.wa-float svg{width:24px;height:24px;flex:none}
+@media (max-width:560px){.wa-float{right:16px;bottom:16px;bottom:calc(16px + env(safe-area-inset-bottom));padding:0 16px 0 14px}}
+@media print{.wa-float{display:none}}
+
 /* Rodapé */
-footer{background:var(--navy);color:#B8C6DA;padding:64px 0 40px;font-size:15px}
+footer{background:var(--navy);color:#B8C6DA;padding:64px 0 112px;font-size:15px}
 footer .top{display:flex;flex-wrap:wrap;justify-content:space-between;gap:32px;padding-bottom:40px;border-bottom:1px solid rgba(255,255,255,.12)}
 footer .slogan{font-family:var(--serif);font-size:26px;color:#fff;margin:18px 0 0}
 footer nav{display:flex;flex-wrap:wrap;gap:28px}
@@ -397,6 +406,7 @@ footer .bottom{display:flex;flex-wrap:wrap;justify-content:space-between;gap:12p
           <p>Conte em poucas linhas o que você quer melhorar. Respondemos em até dois dias úteis com uma proposta de próxima etapa.</p>
           <dl>
             <div><dt>E-mail</dt><dd>[contato@seudominio.com.br]</dd></div>
+            <div><dt>WhatsApp</dt><dd><a href="https://wa.me/5551998107741?text=Ol%C3%A1!%20Vim%20pelo%20site%20da%20Korberg%20%26%20M%C3%BCller%20e%20gostaria%20de%20conversar%20sobre%20um%20projeto." target="_blank" rel="noopener">(51) 99810-7741</a></dd></div>
             <div><dt>Atendimento</dt><dd>Porto Alegre, RS. Presencial na região metropolitana e remoto para todo o Brasil</dd></div>
           </dl>
         </div>
@@ -448,6 +458,11 @@ footer .bottom{display:flex;flex-wrap:wrap;justify-content:space-between;gap:12p
     </div>
   </div>
 </footer>
+
+<a class="wa-float" href="https://wa.me/5551998107741?text=Ol%C3%A1!%20Vim%20pelo%20site%20da%20Korberg%20%26%20M%C3%BCller%20e%20gostaria%20de%20conversar%20sobre%20um%20projeto." target="_blank" rel="noopener" aria-label="Conversar com a Korberg &amp; Müller no WhatsApp">
+  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 19.5l1.3-3.7A8 8 0 1 1 8.4 18.8z"/><path d="M9 10.5h.01M12 10.5h.01M15 10.5h.01"/></svg>
+  <span>WhatsApp</span>
+</a>
 
 <script>
 (function(){
