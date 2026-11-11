@@ -409,7 +409,7 @@ def build_home():
           <h2 id="contato-title" style="margin-bottom:24px">Vamos conversar sobre o seu desafio</h2>
           <p>Conte em poucas linhas o que você quer melhorar. Respondemos em até dois dias úteis com uma proposta para a próxima etapa.</p>
           <dl>
-            <div><dt>E-mail</dt><dd>[contato@seudominio.com.br]</dd></div>
+            <div><dt>E-mail</dt><dd><a href="mailto:contato@korbergmuller.com.br">contato@korbergmuller.com.br</a></dd></div>
             <div><dt>WhatsApp</dt><dd><a href="{wa_link()}" target="_blank" rel="noopener">{WA_DISPLAY}</a></dd></div>
             <div><dt>Atendimento</dt><dd>Presencial em Porto Alegre e região metropolitana; remoto para todo o Brasil.</dd></div>
           </dl>

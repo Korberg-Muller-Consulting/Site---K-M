@@ -1,6 +1,6 @@
 (function(){
   // Endereço que recebe as mensagens do formulário. Troque pelo e-mail oficial da consultoria.
-  var CONTACT_EMAIL = "contato@seudominio.com.br";
+  var CONTACT_EMAIL = "contato@korbergmuller.com.br";
 
   try { document.getElementById("ano").textContent = new Date().getFullYear(); } catch(e){}
 
