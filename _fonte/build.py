@@ -101,6 +101,40 @@ def head(depth, title, desc, path, jsonld, extra_robots=None):
 <a class="skip" href="#conteudo">Pular para o conteúdo</a>
 '''
 
+
+# Seção "Liderança" (fotos e trajetória dos sócios). Oculta por enquanto: troque para True para voltar a exibir.
+SHOW_LIDERANCA = False
+LIDERANCA_HTML = """  <section class="sec" id="lideranca" aria-labelledby="lideranca-title">
+    <div class="wrap">
+      <div class="sec-head">
+        <h2 id="lideranca-title">Liderança</h2>
+        <p>Sócios que acompanham pessoalmente cada projeto, do diagnóstico aos resultados.</p>
+      </div>
+      <div class="lead-grid">
+        <div class="person">
+          <div class="avatar empty">[FOTO]</div>
+          <div>
+            <h3>Felipe [SOBRENOME]</h3>
+            <p class="role">Sócio fundador</p>
+            <p>[Resumo da trajetória: formação, experiência em gestão e tecnologia, setores em que atuou.]</p>
+          </div>
+        </div>
+        <div class="person">
+          <div class="avatar"><img src="images/mariana.jpg" width="480" height="600" alt="Retrato de Mariana, sócia fundadora da Korberg &amp; Müller" loading="lazy" decoding="async"></div>
+          <div>
+            <h3>Mariana [SOBRENOME]</h3>
+            <p class="role">Sócia fundadora</p>
+            <p>[Resumo da trajetória: formação, experiência em gestão e tecnologia, setores em que atuou.]</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+"""
+def nav_lid(depth):
+    return f'<a href="{home_anchor("lideranca", depth)}">Liderança</a>\n' if SHOW_LIDERANCA else ""
+
 def header(depth, current=None):
     def cur(k): return ' aria-current="page"' if current == k else ""
     return f'''
@@ -118,8 +152,7 @@ def header(depth, current=None):
       <a href="{page_href('insights/', depth)}"{cur('insights')}>Insights</a>
       <a href="{home_anchor('abordagem', depth)}">Abordagem</a>
       <a href="{home_anchor('metodo', depth)}">Método</a>
-      <a href="{home_anchor('lideranca', depth)}">Liderança</a>
-      <a class="nav-cta" href="{home_anchor('contato', depth)}">Fale conosco</a>
+      {nav_lid(depth)}      <a class="nav-cta" href="{home_anchor('contato', depth)}">Fale conosco</a>
     </nav>
   </div>
 </header>
@@ -148,8 +181,7 @@ def footer(depth, wa_subject=None):
           <a href="{page_href('servicos/', depth)}">Todos os serviços</a>
           <a href="{page_href('insights/', depth)}">Insights</a>
           <a href="{home_anchor('abordagem', depth)}">Abordagem</a>
-          <a href="{home_anchor('lideranca', depth)}">Liderança</a>
-          <a href="{home_anchor('contato', depth)}">Contato</a>
+          {nav_lid(depth)}          <a href="{home_anchor('contato', depth)}">Contato</a>
       </nav>
       </div>
     </div>
@@ -370,34 +402,7 @@ def build_home():
     </div>
   </section>
 
-  <section class="sec" id="lideranca" aria-labelledby="lideranca-title">
-    <div class="wrap">
-      <div class="sec-head">
-        <h2 id="lideranca-title">Liderança</h2>
-        <p>Sócios que acompanham pessoalmente cada projeto, do diagnóstico aos resultados.</p>
-      </div>
-      <div class="lead-grid">
-        <div class="person">
-          <div class="avatar empty">[FOTO]</div>
-          <div>
-            <h3>Felipe [SOBRENOME]</h3>
-            <p class="role">Sócio fundador</p>
-            <p>[Resumo da trajetória: formação, experiência em gestão e tecnologia, setores em que atuou.]</p>
-          </div>
-        </div>
-        <div class="person">
-          <div class="avatar"><img src="images/mariana.jpg" width="480" height="600" alt="Retrato de Mariana, sócia fundadora da Korberg &amp; Müller" loading="lazy" decoding="async"></div>
-          <div>
-            <h3>Mariana [SOBRENOME]</h3>
-            <p class="role">Sócia fundadora</p>
-            <p>[Resumo da trajetória: formação, experiência em gestão e tecnologia, setores em que atuou.]</p>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <section class="sec contact" id="contato" aria-labelledby="contato-title">
+{LIDERANCA_HTML if SHOW_LIDERANCA else ""}  <section class="sec contact" id="contato" aria-labelledby="contato-title">
     <div class="wrap">
       <div class="cols">
         <div class="intro">
