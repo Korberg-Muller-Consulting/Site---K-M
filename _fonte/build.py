@@ -14,7 +14,7 @@ from charts import STATS, CHART_PORTE, SRC_BCB
 
 MODE, OUT = sys.argv[1], sys.argv[2]
 SRC = os.path.dirname(os.path.abspath(__file__))
-BASE = "https://site---k-m.pages.dev/"   # endereço oficial: troque aqui ao ter domínio próprio
+BASE = "https://korbergmuller.com.br/"   # endereço oficial: troque aqui ao ter domínio próprio
 TODAY = datetime.date.today().isoformat()
 WA_NUMBER = "5551998107741"
 WA_DISPLAY = "(51) 99810-7741"

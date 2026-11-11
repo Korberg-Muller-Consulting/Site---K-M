@@ -2,4 +2,4 @@ User-agent: *
 Allow: /
 Disallow: /_fonte/
 
-Sitemap: https://site---k-m.pages.dev/sitemap.xml
+Sitemap: https://korbergmuller.com.br/sitemap.xml
