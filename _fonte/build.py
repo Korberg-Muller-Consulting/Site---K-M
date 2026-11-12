@@ -52,6 +52,8 @@ BRAND_SVG = '''<svg class="brand-mark" viewBox="0 0 36 36" aria-hidden="true">
       </svg>'''
 CHECK = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg>'
 WA_ICON = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 19.5l1.3-3.7A8 8 0 1 1 8.4 18.8z"/><path d="M9 10.5h.01M12 10.5h.01M15 10.5h.01"/></svg>'
+LINKEDIN_URL = "https://www.linkedin.com/company/korberg-m%C3%BCller-consulting/"
+LINKEDIN_ICON = '<svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 01-2.063-2.065 2.064 2.064 0 112.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>'
 
 import hashlib
 def _asset_version():
@@ -174,6 +176,9 @@ def footer(depth, wa_subject=None):
       <div>
         <span class="brand-name" style="color:#fff">Korberg &amp; Müller<small>CONSULTING</small></span>
         <p class="slogan">Inteligência artificial, resultado real.</p>
+        <div class="foot-social">
+          <a href="{LINKEDIN_URL}" target="_blank" rel="noopener" aria-label="LinkedIn da Korberg &amp; Müller">{LINKEDIN_ICON}</a>
+        </div>
       </div>
       <div class="foot-cols">{cols}
       <nav class="foot-col" aria-label="Institucional">
@@ -726,6 +731,10 @@ def build_assets():
 .foot-title{margin:0 0 6px;font-weight:600;color:#fff;font-size:15px}
 .foot-col a{color:#DCE5F1;text-decoration:none;font-size:15px}
 .foot-col a:hover{color:#fff;text-decoration:underline}
+.foot-social{margin-top:12px;display:flex;gap:12px}
+.foot-social a{color:#DCE5F1;transition:color .2s}
+.foot-social a:hover{color:#fff}
+.foot-social svg{width:24px;height:24px}
 .visually-hidden{position:absolute!important;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border:0}
 .nav a[aria-current="page"]{color:#fff;text-decoration:underline;text-underline-offset:6px}
 '''
