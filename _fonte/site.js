@@ -55,7 +55,7 @@
     }
   }
 
-  // Formulário (só na página inicial): sem servidor e sem chaves; abre o e-mail do visitante com a mensagem pronta
+  // Formulário (só na página inicial): envia via Web3Forms direto para contato@korbergmuller.com.br
   var form = document.getElementById("form-contato"), status = document.getElementById("form-status");
   if (form && status) {
     var valid = function(v){ return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(v); };
@@ -67,10 +67,29 @@
         (!nome ? form.nome : !valid(email) ? form.email : form.mensagem).focus();
         return;
       }
-      var assunto = "Contato pelo site: " + form.interesse.value;
-      var corpo = "Nome: " + nome + "\nEmpresa: " + form.empresa.value.trim() + "\nE-mail: " + email + "\nInteresse: " + form.interesse.value + "\n\n" + msg;
-      window.location.href = "mailto:" + CONTACT_EMAIL + "?subject=" + encodeURIComponent(assunto) + "&body=" + encodeURIComponent(corpo);
-      status.textContent = "Abrimos seu aplicativo de e-mail com a mensagem pronta. Se ele não abrir, escreva para " + CONTACT_EMAIL + ".";
+      var btn = form.querySelector("button[type=submit]");
+      btn.disabled = true;
+      btn.textContent = "Enviando…";
+      var data = new FormData(form);
+      fetch("https://api.web3forms.com/submit", {
+        method: "POST",
+        body: data
+      }).then(function(r){ return r.json(); }).then(function(r){
+        if (r.success) {
+          status.textContent = "Mensagem enviada! Respondemos em até dois dias úteis.";
+          status.style.color = "#2e7d32";
+          form.reset();
+        } else {
+          status.textContent = "Erro ao enviar. Tente novamente ou escreva para " + CONTACT_EMAIL + ".";
+          status.style.color = "#c62828";
+        }
+      }).catch(function(){
+        status.textContent = "Erro de conexão. Tente novamente ou escreva para " + CONTACT_EMAIL + ".";
+        status.style.color = "#c62828";
+      }).finally(function(){
+        btn.disabled = false;
+        btn.textContent = "Enviar mensagem";
+      });
     });
   }
 

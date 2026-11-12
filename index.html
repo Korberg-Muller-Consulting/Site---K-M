@@ -149,7 +149,7 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700&amp;family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;0,6..72,600;1,6..72,400&amp;display=swap" rel="stylesheet">
 <script src="assets/js-flag.js"></script>
-<link rel="stylesheet" href="assets/site.css?v=a3c588c64d">
+<link rel="stylesheet" href="assets/site.css?v=6b2cfbe339">
 </head>
 <body>
 <a class="skip" href="#conteudo">Pular para o conteúdo</a>
@@ -401,8 +401,7 @@
     <div class="wrap">
       <div class="cols">
         <div class="intro">
-          <h2 id="contato-title" style="margin-bottom:24px">Vamos conversar sobre o seu desafio</h2>
-          <p>Conte em poucas linhas o que você quer melhorar. Respondemos em até dois dias úteis com uma proposta para a próxima etapa.</p>
+          <h2 id="contato-title" style="margin-bottom:24px">Vamos conversar sobre o seu desafio.</h2>
           <dl>
             <div><dt>E-mail</dt><dd><a href="mailto:contato@korbergmuller.com.br">contato@korbergmuller.com.br</a></dd></div>
             <div><dt>WhatsApp</dt><dd><a href="https://wa.me/5551998107741?text=Ol%C3%A1%21%20Vim%20pelo%20site%20da%20Korberg%20%26%20M%C3%BCller%20e%20gostaria%20de%20conversar%20sobre%20um%20projeto." target="_blank" rel="noopener">(51) 99810-7741</a></dd></div>
@@ -410,6 +409,10 @@
           </dl>
         </div>
         <form id="form-contato" novalidate>
+          <input type="hidden" name="access_key" value="6022c954-70f9-44ea-ac1d-8299a7f40e48">
+          <input type="hidden" name="subject" value="Novo contato pelo site Korberg &amp; Müller">
+          <input type="hidden" name="from_name" value="Site Korberg &amp; Müller">
+          <input type="hidden" name="botcheck" style="display:none">
           <div class="row2">
             <div class="field"><label for="nome">Nome</label><input id="nome" name="nome" autocomplete="name" required maxlength="100"></div>
             <div class="field"><label for="empresa">Empresa</label><input id="empresa" name="empresa" autocomplete="organization" maxlength="100"></div>
@@ -429,7 +432,7 @@
           </div>
           <div class="field"><label for="mensagem">Mensagem</label><textarea id="mensagem" name="mensagem" required maxlength="2000"></textarea></div>
           <button class="btn btn-dark" type="submit">Enviar mensagem</button>
-          <p class="form-note">Ao clicar em Enviar mensagem, seu aplicativo de e-mail será aberto com o texto pronto. Usamos seus dados apenas para responder a este contato.</p>
+          <p class="form-note">Usamos seus dados apenas para responder a este contato.</p>
           <p class="form-status" id="form-status" role="status" aria-live="polite"></p>
         </form>
       </div>
@@ -482,6 +485,6 @@
   <span>WhatsApp</span>
 </a>
 
-<script src="assets/site.js?v=a3c588c64d" defer></script>
+<script src="assets/site.js?v=6b2cfbe339" defer></script>
 </body>
 </html>

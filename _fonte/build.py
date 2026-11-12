@@ -411,8 +411,7 @@ def build_home():
     <div class="wrap">
       <div class="cols">
         <div class="intro">
-          <h2 id="contato-title" style="margin-bottom:24px">Vamos conversar sobre o seu desafio</h2>
-          <p>Conte em poucas linhas o que você quer melhorar. Respondemos em até dois dias úteis com uma proposta para a próxima etapa.</p>
+          <h2 id="contato-title" style="margin-bottom:24px">Vamos conversar sobre o seu desafio.</h2>
           <dl>
             <div><dt>E-mail</dt><dd><a href="mailto:contato@korbergmuller.com.br">contato@korbergmuller.com.br</a></dd></div>
             <div><dt>WhatsApp</dt><dd><a href="{wa_link()}" target="_blank" rel="noopener">{WA_DISPLAY}</a></dd></div>
@@ -420,6 +419,10 @@ def build_home():
           </dl>
         </div>
         <form id="form-contato" novalidate>
+          <input type="hidden" name="access_key" value="6022c954-70f9-44ea-ac1d-8299a7f40e48">
+          <input type="hidden" name="subject" value="Novo contato pelo site Korberg &amp; Müller">
+          <input type="hidden" name="from_name" value="Site Korberg &amp; Müller">
+          <input type="hidden" name="botcheck" style="display:none">
           <div class="row2">
             <div class="field"><label for="nome">Nome</label><input id="nome" name="nome" autocomplete="name" required maxlength="100"></div>
             <div class="field"><label for="empresa">Empresa</label><input id="empresa" name="empresa" autocomplete="organization" maxlength="100"></div>
@@ -433,7 +436,7 @@ def build_home():
           </div>
           <div class="field"><label for="mensagem">Mensagem</label><textarea id="mensagem" name="mensagem" required maxlength="2000"></textarea></div>
           <button class="btn btn-dark" type="submit">Enviar mensagem</button>
-          <p class="form-note">Ao clicar em Enviar mensagem, seu aplicativo de e-mail será aberto com o texto pronto. Usamos seus dados apenas para responder a este contato.</p>
+          <p class="form-note">Usamos seus dados apenas para responder a este contato.</p>
           <p class="form-status" id="form-status" role="status" aria-live="polite"></p>
         </form>
       </div>
@@ -748,7 +751,7 @@ def build_seo():
     open(os.path.join(OUT, "sitemap.xml"), "w").write(f'<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n{urls}\n</urlset>\n')
     open(os.path.join(OUT, "robots.txt"), "w").write(f"User-agent: *\nAllow: /\nDisallow: /_fonte/\n\nSitemap: {url('sitemap.xml')}\n")
     csp = ("default-src 'self'; script-src 'self'; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; "
-           "font-src https://fonts.gstatic.com; img-src 'self' data:; connect-src 'self'; form-action 'none'; "
+           "font-src https://fonts.gstatic.com; img-src 'self' data:; connect-src 'self' https://api.web3forms.com; form-action 'self' https://api.web3forms.com; "
            "base-uri 'self'; object-src 'none'; frame-ancestors 'none'; upgrade-insecure-requests")
     open(os.path.join(OUT, "_headers"), "w").write(f"""/*
   Content-Security-Policy: {csp}
