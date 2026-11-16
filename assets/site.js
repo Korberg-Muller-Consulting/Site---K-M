@@ -79,6 +79,13 @@
           status.textContent = "Mensagem enviada! Respondemos em até dois dias úteis.";
           status.style.color = "#2e7d32";
           form.reset();
+          try {
+            window.dataLayer = window.dataLayer || [];
+            window.dataLayer.push({
+              'event': 'lead_form_submitted',
+              'form_name': 'Contato Principal'
+            });
+          } catch(e){}
         } else {
           status.textContent = "Erro ao enviar. Tente novamente ou escreva para " + CONTACT_EMAIL + ".";
           status.style.color = "#c62828";
@@ -119,4 +126,17 @@
       wrap.addEventListener("pointerleave", function(){ svg.style.setProperty("--mx", 0); svg.style.setProperty("--my", 0); });
     });
   }
+  // Rastreamento de conversão: cliques no WhatsApp
+  document.addEventListener("click", function(e){
+    var a = e.target.closest && e.target.closest("a[href*='wa.me'], a[href*='whatsapp.com']");
+    if (a) {
+      try {
+        window.dataLayer = window.dataLayer || [];
+        window.dataLayer.push({
+          'event': 'whatsapp_click',
+          'destination': '5551998107741'
+        });
+      } catch(err){}
+    }
+  });
 })();

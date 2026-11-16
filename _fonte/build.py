@@ -68,6 +68,12 @@ def head(depth, title, desc, path, jsonld, extra_robots=None):
     return f'''<!DOCTYPE html>
 <html lang="pt-BR">
 <head>
+<script async src="https://www.googletagmanager.com/gtm.js?id=GTM-KZSZC76Z"></script>
+<script>
+window.dataLayer = window.dataLayer || [];
+function gtag(){{dataLayer.push(arguments);}}
+gtag('js', new Date());
+</script>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>{title}</title>
@@ -100,6 +106,7 @@ def head(depth, title, desc, path, jsonld, extra_robots=None):
 <link rel="stylesheet" href="{p}assets/site.css?v={ASSET_V}">
 </head>
 <body>
+<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-KZSZC76Z" height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 <a class="skip" href="#conteudo">Pular para o conteúdo</a>
 '''
 
