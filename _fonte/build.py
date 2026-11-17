@@ -79,6 +79,7 @@ gtag('js', new Date());
 <title>{title}</title>
 <meta name="description" content="{esc(desc)}">
 <meta name="robots" content="{extra_robots or 'index, follow, max-image-preview:large'}">
+<meta name="google-site-verification" content="kZMlr2Vngs3Y_wUSxGOz9r0fyZBZIStiohjtcFVoW-o">
 <link rel="canonical" href="{url(path)}">
 <meta property="og:type" content="website">
 <meta property="og:locale" content="pt_BR">
@@ -287,7 +288,9 @@ def build_home():
       "alternateName": ["Korberg & Müller", "Korberg & Muller", "Korberg Mueller", "K&M Consulting"],
       "slogan": "Inteligência artificial, resultado real.",
       "description": "Consultoria empresarial, de RH e de inteligência artificial para pequenas e médias empresas de Porto Alegre e região, com atendimento presencial.",
-      "url": BASE, "telephone": "+55-51-99810-7741", "logo": url("icon-192.png"), "image": url("og-image.png"),
+      "url": BASE, "telephone": "+55-51-99810-7741", "email": "contato@korbergmuller.com.br", "logo": url("icon-192.png"), "image": url("og-image.png"),
+      "sameAs": [LINKEDIN_URL],
+      "openingHoursSpecification": [{"@type": "OpeningHoursSpecification", "dayOfWeek": ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday"], "opens": "09:00", "closes": "17:00"}],
       "address": {"@type": "PostalAddress", "addressLocality": "Porto Alegre", "addressRegion": "RS", "addressCountry": "BR"},
       "areaServed": AREA, "inLanguage": "pt-BR",
       "knowsAbout": ["Consultoria empresarial", "Consultoria de RH", "Gestão de pessoas", "Inteligência artificial", "Automação de processos", "Agentes de IA", "Integração de sistemas", "Funis de vendas", "LGPD"],
@@ -492,6 +495,15 @@ def build_service(s):
               "serviceType": strip_amp(s["name"]), "description": strip_amp(s["desc"]), "url": url(path),
               "provider": ORG_REF, "areaServed": AREA}
     lds = [svc_ld, crumbs_ld([("Início", ""), ("Serviços", "servicos/"), (strip_amp(s["name"]), path)])]
+    if s.get("faq"):
+        lds.append({
+            "@context": "https://schema.org",
+            "@type": "FAQPage",
+            "mainEntity": [
+                {"@type": "Question", "name": strip_amp(q), "acceptedAnswer": {"@type": "Answer", "text": strip_amp(a)}}
+                for q, a in s["faq"]
+            ],
+        })
 
     offer = f'\n      <p class="offer">{s["offer"]}</p>' if s.get("offer") else ""
     intro = ""
