@@ -367,6 +367,33 @@ def build_home():
     </div>
   </section>
 
+  <section class="editorial-band" aria-label="Como atuamos na prática">
+    <div class="editorial-row">
+      <div class="editorial-copy">
+        <p class="eyebrow">Tecnologia e IA</p>
+        <h2>IA que sai do teste e entra na rotina</h2>
+        <p>Trabalhamos lado a lado com a sua equipe para escolher os gargalos certos, conectar os sistemas que a empresa já utiliza e acompanhar a adoção até o resultado aparecer no dia a dia.</p>
+        <div class="editorial-links">
+          <a href="{page_href('servicos/estrategia-de-ia/', d)}">Estratégia de IA para PMEs</a>
+          <a href="{page_href('servicos/automacao-de-processos/', d)}">Automação de processos com IA</a>
+        </div>
+      </div>
+      <figure class="editorial-media">{img_tag('destaque-ia.jpg', 'Equipe analisando indicadores e soluções de inteligência artificial em notebooks', 1200, 800, d)}</figure>
+    </div>
+    <div class="editorial-row rev">
+      <div class="editorial-copy">
+        <p class="eyebrow">Gestão e pessoas</p>
+        <h2>Pessoas preparadas para liderar a mudança</h2>
+        <p>Tecnologia sem liderança alinhada vira custo. Estruturamos a área de RH com isenção, desenvolvemos gestores e preparamos o time para operar com novos processos e ferramentas.</p>
+        <div class="editorial-links">
+          <a href="{page_href('servicos/consultoria-de-rh/', d)}">Consultoria de RH (CHRO as a Service)</a>
+          <a href="{home_anchor('contato', d)}">Agendar uma conversa</a>
+        </div>
+      </div>
+      <figure class="editorial-media">{img_tag('destaque-pessoas.jpg', 'Líder empresarial em ambiente de escritório com equipe colaborando ao fundo', 1200, 800, d)}</figure>
+    </div>
+  </section>
+
   <section class="sec numbers" id="numeros" aria-labelledby="num-title">
     <div class="wrap">
       <div class="sec-head">
@@ -634,12 +661,16 @@ def post_cards(depth):
     out = ""
     for _, a in sorted(enumerate(ARTICLES), key=lambda t: (t[1]["date"], t[0]), reverse=True):
         href = page_href("insights/%s/" % a["slug"], depth)
+        thumb = img_tag(a.get("img", ""), a.get("img_alt", ""), 1200, 750, depth)
+        thumb_html = f'\n          <figure class="post-thumb">{thumb}</figure>' if thumb else ""
         out += f'''
-        <article class="post-card">
-          <p class="post-meta"><time datetime="{a['date']}">{a['date_br']}</time>, {a['read']}</p>
-          <h3><a href="{href}">{a['h1']}</a></h3>
-          <p>{a['card']}</p>
-          <span class="more" aria-hidden="true">Ler o artigo</span>
+        <article class="post-card">{thumb_html}
+          <div class="post-card-body">
+            <p class="post-meta"><time datetime="{a['date']}">{a['date_br']}</time>, {a['read']}</p>
+            <h3><a href="{href}">{a['h1']}</a></h3>
+            <p>{a['card']}</p>
+            <span class="more" aria-hidden="true">Ler o artigo</span>
+          </div>
         </article>'''
     return out
 
@@ -689,7 +720,7 @@ def build_article(a):
     </div>
   </section>
   <section class="sec article-sec">
-    <div class="wrap">
+    <div class="wrap">{(lambda t: f'\n      <figure class="article-cover">{t}</figure>' if t else '')(img_tag(a.get('img', ''), a.get('img_alt', ''), 1200, 750, d, eager=True))}
       <div class="article-body">{a["body"]}
       </div>
     </div>

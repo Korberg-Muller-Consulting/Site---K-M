@@ -82,7 +82,7 @@ SERVICES = [
   ],
  },
  {
-  "slug": "agentes-de-ia", "img_alt": "Pessoa atendendo clientes pelo celular em um pequeno negócio", "group": "tec", "icon": "agentes",
+  "slug": "agentes-de-ia", "img_alt": "Líder empresarial em escritório moderno acompanhando o atendimento e a operação da empresa", "group": "tec", "icon": "agentes",
   "name": "Agentes de IA sob medida",
   "card": "Agentes que atendem clientes no WhatsApp, pesquisam, redigem, analisam e executam tarefas com as regras e o tom da sua empresa.",
   "title": "Agentes de IA para empresas em Porto Alegre | Korberg &amp; Müller",
@@ -119,7 +119,7 @@ SERVICES = [
   ],
  },
  {
-  "slug": "integracoes", "img_alt": "Tela de computador com painéis de indicadores e gráficos de negócio", "group": "tec", "icon": "integracoes",
+  "slug": "integracoes", "img_alt": "Equipe reunida em volta de mesa com notebooks e tablets exibindo indicadores integrados", "group": "tec", "icon": "integracoes",
   "name": "Dados e integrações",
   "card": "Conectamos CRM, planilhas e ferramentas de gestão de projetos, como Trello, ClickUp e Notion, para que a informação circule sem cópia manual.",
   "title": "Integração de sistemas e dados em Porto Alegre | Korberg &amp; Müller",
@@ -212,7 +212,7 @@ SERVICES = [
   ],
  },
  {
-  "slug": "consultoria-de-rh", "img_alt": "Grupo de profissionais em um treinamento de liderança", "group": "gestao",
+  "slug": "consultoria-de-rh", "img_alt": "Lideranças e consultor em conversa de acompanhamento e desenvolvimento de equipe", "group": "gestao",
   "name": "Consultoria de RH",
   "offer": "CHRO as a Service",
   "card": "Um diretor de RH sob demanda, neutro e independente, para estruturar a área de pessoas, desenvolver lideranças e apoiar a busca de executivos.",

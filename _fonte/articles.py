@@ -4,6 +4,8 @@ from charts import CHART_PORTE, CHART_INDUSTRIA, CHART_PRODUTIVIDADE, SRC_BCB, S
 ARTICLES = [
  {
   "slug": "rewired-mckinsey-pequenas-e-medias-empresas",
+  "img": "insight-rewired.jpg",
+  "img_alt": "Lideranças reunidas em sala de diretoria discutindo estratégia e transformação digital",
   "date": "2026-11-10",
   "date_br": "10 de novembro de 2026",
   "read": "7 min de leitura",
@@ -61,6 +63,8 @@ ARTICLES = [
  },
  {
   "slug": "ia-reduzir-custos-eficiencia-dados",
+  "img": "insight-eficiencia.jpg",
+  "img_alt": "Executivo apresentando análise de eficiência e indicadores para a equipe em escritório",
   "date": "2026-11-10",
   "date_br": "10 de novembro de 2026",
   "read": "6 min de leitura",
